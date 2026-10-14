@@ -79,3 +79,31 @@ unemp_top_decreases_no_covid <- unemp |>
   filter(year(date) != 2020) |>
   slice_min(order_by = unemployment_rate_change, n = 5) |>
   ungroup()
+
+# 5.1
+
+ggplot(unemp, aes(x = date, y = unemployment_rate, color = region)) +
+  geom_line() +        
+  labs(title = "Unemployment Rate Over Time", x = "Date", y = "Unemployment Rate") +
+  theme_minimal()
+
+# 5.2 
+ggplot(unemp, aes(x = date, y = unemployment_rate, color = region)) +
+  geom_line() +   facet_wrap(~ region)     
+  labs(title = "Unemployment Rate Over Time", x = "Date", y = "Unemployment Rate") +
+  theme_minimal()
+  
+ggplot(unemp_summary, aes(x = fct_reorder(region, mean_rate), y = mean_rate, fill = region)) +
+  geom_col() +        
+  labs(title = "Mean Unemployment Rate By Region", x = "Region", y = "Unemployment Rate") +
+  theme_minimal()
+
+# 5.3 - Personal Graph Choice
+ggplot(unemp_summary, aes(x = fct_reorder(region, max_rate), y = max_rate, fill = region)) +
+  geom_col() +        
+  labs(title = "Max Unemployment Rate By Region", x = "Region", y = "Unemployment Rate") +
+  theme_minimal()
+
+# It is interesting to see that the order of regions differs between the mean and max values. For example, California has the highest mean, but only the second highest max. Also Oregon has the second highest mean, but the 4th largest max.
+
+
