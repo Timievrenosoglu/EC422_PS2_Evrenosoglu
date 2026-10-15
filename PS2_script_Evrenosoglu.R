@@ -89,8 +89,8 @@ ggplot(unemp, aes(x = date, y = unemployment_rate, color = region)) +
 
 # 5.2 
 ggplot(unemp, aes(x = date, y = unemployment_rate, color = region)) +
-  geom_line() +   facet_wrap(~ region)     
-  labs(title = "Unemployment Rate Over Time", x = "Date", y = "Unemployment Rate") +
+  geom_line() +   facet_wrap(~ region) +     
+  labs(title = "Unemployment Rate (%) Over Time By Region", x = "Date", y = "Unemployment Rate") +
   theme_minimal()
   
 ggplot(unemp_summary, aes(x = fct_reorder(region, mean_rate), y = mean_rate, fill = region)) +
@@ -105,5 +105,4 @@ ggplot(unemp_summary, aes(x = fct_reorder(region, max_rate), y = max_rate, fill 
   theme_minimal()
 
 # It is interesting to see that the order of regions differs between the mean and max values. For example, California has the highest mean, but only the second highest max. Also Oregon has the second highest mean, but the 4th largest max.
-
 
